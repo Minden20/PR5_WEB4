@@ -48,14 +48,11 @@ export class SlugService {
     }
 
     const lower = title.toLowerCase().trim();
-
-    // Транслітерація кириличних символів
     const transliterated = lower
       .split('')
       .map((char) => this.cyrillicToLatinMap[char] ?? char)
       .join('');
 
-    // Заміна всіх неалфавітно-цифрових символів на дефіси
     return transliterated
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
